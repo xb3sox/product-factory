@@ -2,7 +2,7 @@
 
 Turn a product idea into research-backed docs that coding agents can build from.
 
-Repo holds two files only:
+Workflow sources in this repo:
 
 | File | Role |
 | --- | --- |
