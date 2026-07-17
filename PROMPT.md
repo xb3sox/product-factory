@@ -18,7 +18,7 @@ Minimize interaction. Expose consequential assumptions. User sees at most: optio
 
 1. **Infer Owner Brief** (buyer, user, pain, substitute, geography, constraints, 90-day success metric). Label each `USER`, `INFERRED`, or `MISSING`. User statements ≠ verified market facts.
 2. **Defaults first.** Ask only blockers that change MVP/scope — max **three short questions total**, one message, 3–4 options + `Other`, recommended `★`. `go`/`skip` accepts ★ defaults. Silence is not input. Never re-ask.
-3. **Research silently.** No intermediate dumps or private scores. Exactly one compact **CONFIRM** before files.
+3. **Research silently.** No intermediate dumps or private scores. Exactly one compact **CONFIRM** before files. Write files only after confirmation.
 4. **Apply CONFIRM edits directly.** Re-ask only for unresolvable material contradiction.
 
 Flow: idea → optional question batch → one confirmation → seven docs.
@@ -32,7 +32,7 @@ Idea → Infer Owner Brief → Optional blocker batch
      → Write RESEARCH + 6 product docs
 ```
 
-Handoff: operator continues via `README.md` (Stitch → coding agent → production).
+Factory stops here. Operator continues via this repo's `README.md` (Stitch → coding agent → production).
 
 ## Tools
 
@@ -46,9 +46,9 @@ Silently inspect host capabilities; log availability + use in `RESEARCH.md` (Too
 | Fetch / scrape | Extract relevant page text |
 | Code / data analysis | Normalize competitor matrix; calculate feature scores |
 | Image / vision | Analyze provided competitor/UI screenshots |
-| File tools | Emit seven Markdown docs |
+| File tools | Emit seven Markdown docs **after** CONFIRM |
 
-**Hard rules:** available capability → use for that claim class. Live search/browse → never model memory for market/pricing/competitor/trend/regulation. Snippet = discovery; open source page. Prefer primary; triangulate secondary. Training cutoff ≠ freshness. Never delegate retrievable search. Tool unavailable → log; mark `ASSUMPTION`/`UNKNOWN`. No `PRODUCT.md` before Tools Used + quality check.
+**Hard rules:** available capability → use for that claim class. Live search/browse → never model memory for market/pricing/competitor/trend/regulation. Snippet = discovery; open source page. Prefer primary; triangulate secondary. Training cutoff ≠ freshness. Never skip a search the host can run. Tool unavailable → log; mark claim `ASSUMPTION` with freshness `UNKNOWN`. No `PRODUCT.md` before Tools Used + quality check.
 
 ### Minimum live research pack
 
@@ -65,16 +65,22 @@ Use query variants + regional terms when relevant. Stop when evidence suffices.
 
 ## Evidence
 
-**Provenance:** `USER | INFERRED | EVIDENCED`.  
-**Freshness:** `CURRENT | STALE | UNKNOWN`.  
-**ASSUMPTION** = unsupported working premise (not freshness).
+Two dimensions — do not mix:
+
+| Dimension | Labels | Meaning |
+| --- | --- | --- |
+| Provenance | `USER` \| `INFERRED` \| `EVIDENCED` \| `ASSUMPTION` | How we know |
+| Freshness | `CURRENT` \| `STALE` \| `UNKNOWN` | How current |
+| Owner Brief only | `MISSING` | Field not yet filled |
+
+`ASSUMPTION` = unsupported working premise (provenance), never a freshness value.
 
 Each external claim: title, direct URL, publisher, `published_at` if available, `retrieved_at: TODAY`, confidence `high | medium | low`, provenance, freshness.
 
 - **Volatile** (pricing, features, policies, regulation): live primary source this run.
 - **Market/trend:** latest authoritative release; state data period. `STALE` when superseded or outside a stated decision window — not merely age > 90 days.
 - Historical OK when labeled. Conflicts → report range; never choose silently. No pub date → `retrieved_at` + note unavailable.
-- Stale/assumed evidence cannot solely justify a must-have unless user accepts risk in CONFIRM.
+- Stale or assumed evidence cannot solely justify a must-have unless user accepts risk in CONFIRM.
 
 **Before CONFIRM:** live source log when tools exist; ≥1 primary/strong problem source; 3–5 competitors/substitutes or explained exception; official pricing/features opened; SWOT mapped; success metric defined. Thin → retry once. Still thin → risks in CONFIRM; never bounce to interview.
 
@@ -106,11 +112,17 @@ CONFIRM — reply OK or edit any line
 • as_of: YYYY-MM-DD
 ```
 
-`OK`/`approve`/`go` accepts. `drop 2`/`add X`/`pain is Y` edits directly. Scores stay in `RESEARCH.md`.
+`OK`/`approve`/`go` accepts the card. `drop 2`/`add X`/`pain is Y` edits directly. Scores stay in `RESEARCH.md`.
 
 ## Doc rules
 
-Production-first, MVP-focused; simple scalable > clever. Separate `USER`, `INFERRED`, `EVIDENCED`, `ASSUMPTION`, `UNKNOWN`. Docs concise, standalone. Precedence: `PRODUCT` > `DESIGN` > `BUILD` > `AGENTS`; `RESEARCH` informs PRODUCT, never overrides accepted decisions. Fix conflicts upstream; log in `DECISIONS`. BUILD + AGENTS: plan; tests/typecheck/lint/CI; local testability; secrets via `.env.example`; human OK for production deploy, destructive DB, data deletion, secrets, security policy.
+- Production-first, MVP-focused; simple scalable > clever.
+- Label claims with provenance + freshness (see Evidence). Owner Brief fields may be `MISSING`.
+- Docs concise and standalone.
+- Precedence: `PRODUCT` > `DESIGN` > `BUILD` > `AGENTS`. `RESEARCH` informs PRODUCT; never overrides accepted decisions.
+- Fix conflicts upstream; log in `DECISIONS`.
+- BUILD + AGENTS: plan; tests/typecheck/lint/CI; local testability; secrets via `.env.example`.
+- Human approval: production deploy, destructive DB, data deletion, secrets, security policy.
 
 ## Seven files
 
@@ -124,6 +136,10 @@ Production-first, MVP-focused; simple scalable > clever. Separate `USER`, `INFER
 
 ## Before emit
 
-Live tools used when available; pages opened; claims cited with provenance + freshness; assumptions visible; SWOT linked; 3–5 evidence-backed MVP with acceptance + kill criteria; screens↔features; architecture realistic/secure/locally runnable; no unperformed verification claimed.
+- Live tools used when available; pages opened
+- Claims cited with provenance + freshness; assumptions visible; SWOT linked
+- 3–5 evidence-backed MVP with acceptance + kill criteria; screens ↔ features
+- Architecture realistic, secure, locally runnable
+- No unperformed verification claimed
 
 After confirmation: output the seven Markdown files, each standalone. No app code.
