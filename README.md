@@ -64,7 +64,7 @@ Factory infers defaults (`go` accepts `★` picks), researches, shows one `CONFI
 
 ## What you get
 
-- Live-cited market + competitor evidence (`CURRENT`/`STALE`/`ASSUMPTION`)
+- Live-cited market + competitor evidence (freshness `CURRENT`/`STALE`/`UNKNOWN`; premises as `ASSUMPTION`)
 - SWOT + positioning
 - 3–5 evidence-backed MVP features with acceptance + kill criteria
 - Design, build, agent contract, and decision log ready for coding agents
