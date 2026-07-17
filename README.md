@@ -15,6 +15,7 @@ Idea → Research → Confirm → Docs → Design → Build → Validate
 3. **Save** — copy seven docs from chat into a **new product repo** (not this factory repo). The product repo becomes the **source of truth**.
 4. **Design (optional)** — feed `PRODUCT.md` + `DESIGN.md` to a UI tool (Stitch, Figma AI, etc.). Visuals only. New screen → update `PRODUCT.md` first.
 5. **Build** — give all seven docs to a coding agent. Prep repo (skeleton, tests, `.env.example`) before features. Build **one vertical slice at a time:** input → processing → user value → output → measurement. Repeat per MVP item.
+6. **Validate** — run each slice against its `PRODUCT.md` validation experiment (metric, threshold, timeframe). Keep, defer, or redesign per kill criteria before the next feature.
 
 ## Documents
 
