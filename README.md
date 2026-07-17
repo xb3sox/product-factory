@@ -26,7 +26,7 @@ Idea → live research + SWOT → confirm once → 7 docs
 | Cursor | Agent + web/browser/Firecrawl/MCP |
 | Other | Search + browse minimum |
 
-No live tools → claims marked `ASSUMPTION`/`UNKNOWN`. Live search required for market/pricing/competitors/regulation.
+No live tools → claims marked `ASSUMPTION` with freshness `UNKNOWN`. Live search required for market/pricing/competitors/regulation.
 
 ## Blueprint
 
@@ -40,7 +40,7 @@ OPTIONAL CONTEXT:
 <users, pain, constraints, budget, geography, screenshots, or links>
 ```
 
-Factory infers defaults (`go` accepts `★` picks), researches, shows one `CONFIRM`. Reply `OK` or edit (`drop 2`, `pain is X`), then save:
+Factory infers defaults (`go`/`skip` accepts `★` picks), researches, shows one `CONFIRM`. Reply `OK` or edit (`drop 2`, `pain is X`), then save:
 
 `RESEARCH.md` · `README.md` · `PRODUCT.md` · `DESIGN.md` · `BUILD.md` · `AGENTS.md` · `DECISIONS.md`
 
