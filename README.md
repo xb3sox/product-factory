@@ -1,54 +1,173 @@
-﻿# AI Product Factory
+﻿# How to Use the Master Prompt
 
-Turn one product idea into validated, agent-ready product docs.
+## 1. Add Your Product Idea
+
+Copy the full master prompt and replace:
 
 ```text
-Idea → Research → Confirm → Docs → Design → Build → Validate
+[PASTE PRODUCT IDEA HERE]
 ```
 
-**Handoff:** research tools → chat output → design tools → coding agents
+with your product idea.
 
-## Quality rules
+Example:
 
-Check saved docs before Build (step 5). Fail any → re-run Research from step 1.
+```text
+An AI-powered project management app for small remote teams.
+```
 
-- Use live research tools when available; else mark `ASSUMPTION` + freshness `UNKNOWN`.
-- RESEARCH must show Tools Used, `as_of`, direct URLs, freshness, sources opened, SWOT cited.
-- Build only **confirmed MVP scope**. `PRODUCT` > `DESIGN` > `BUILD` > `AGENTS`; RESEARCH informs PRODUCT.
-- After each slice: score product value, UX match, technical quality, test quality; average ≥8 and no category <7 to continue.
-- Red tests = not done. New scope → update `PRODUCT.md` first.
-- Human OK required: production deploy, destructive DB, data deletion, secrets, security/compliance changes.
+## 2. Paste It Into ChatGPT or Gemini
 
-## Workflow
+Start a new chat and paste the complete prompt.
 
-1. **Research** — enable search/browse in your chat tool. Paste entire [`PROMPT.md`](PROMPT.md) +:
+For best results, use a model with:
 
-    ```text
-    PRODUCT IDEA:
-    <idea>
+- Web browsing
+- File generation
+- Long context
+- Advanced reasoning
 
-    OPTIONAL CONTEXT:
-    <users, pain, constraints, budget, geography, stack, compliance, screenshots, or links>
-    ```
+## 3. Answer the Interview
 
-2. **Confirm** — reply to ≤3 blocker questions if asked (`go`/`skip` = ★ defaults; **silence ≠ input**). Review one CONFIRM card; reply `OK`/`approve`/`go` or edit lines. **No docs before confirmation.**
-3. **Save** — copy seven docs from chat into a **new product repo** (not this factory repo). The product repo becomes the **source of truth**.
-4. **Design (optional)** — feed `PRODUCT.md` + `DESIGN.md` to a UI tool (Stitch, Figma AI, etc.). Visuals only. New screen → update `PRODUCT.md` first.
-5. **Build** — after Quality rules pass, give all seven docs to a coding agent. Prep repo (skeleton, tests, `.env.example`) before features. Build **one vertical slice at a time:** input → processing → user value → output → measurement. Repeat per MVP item.
-6. **Validate** — run each slice against its `PRODUCT.md` validation experiment (metric, threshold, timeframe). Keep, defer, or redesign per kill criteria before the next feature.
+The AI will ask short questions one at a time.
 
-## Documents
+You can reply with:
 
-| File | Purpose |
-| --- | --- |
-| `RESEARCH.md` | Evidence, competitors, assumptions, risks |
-| `PRODUCT.md` | Users, MVP, requirements, success metrics |
-| `DESIGN.md` | UX flows, screens, states |
-| `BUILD.md` | Architecture and technical plan |
-| `AGENTS.md` | Coding agent rules |
-| `DECISIONS.md` | Important decisions and changes |
-| `README.md` | Product workflow (in your product repo) |
+```text
+Recommended
+```
 
-## License
+to accept the suggested option.
 
-Free use. No warranty.
+Or reply with:
+
+```text
+All recommended
+```
+
+to let the AI choose all remaining options.
+
+## 4. Approve the Product Direction
+
+The AI will show a summary of:
+
+- Product concept
+- Target users
+- MVP features
+- Recommended technology
+- Assumptions
+- Main risks
+
+Reply with:
+
+```text
+Approve
+```
+
+Or request a change:
+
+```text
+Change: Add a mobile app to the MVP
+```
+
+## 5. Download the Generated Files
+
+After approval, the AI will generate the full product package.
+
+Prefer downloading it as a ZIP file.
+
+The package will include:
+
+```text
+/
+├── README.md
+├── AGENTS.md
+├── CLAUDE.md
+├── GEMINI.md
+├── PLANS.md
+├── docs/
+└── prompts/
+```
+
+## 6. Create the Design
+
+Open:
+
+```text
+prompts/STITCH.md
+```
+
+Copy its prompts into Google Stitch to generate the product screens and design system.
+
+Review and refine the design before development.
+
+## 7. Prepare the Code Repository
+
+Create or open your project repository.
+
+Add all generated Markdown files to the repository root while keeping the same folder structure.
+
+Example:
+
+```text
+your-project/
+├── AGENTS.md
+├── PLANS.md
+├── docs/
+├── prompts/
+└── source-code/
+```
+
+## 8. Start Building
+
+Open:
+
+```text
+prompts/BUILD.md
+```
+
+Give it to your coding agent, such as:
+
+- Codex
+- Claude Code
+- Gemini CLI
+- Cursor
+- Replit Agent
+
+The agent will read the product documents and start with the next task in:
+
+```text
+PLANS.md
+```
+
+## 9. Build One Task at a Time
+
+For each development session, ask the agent:
+
+```text
+Read AGENTS.md and PLANS.md. Implement the next ready task, verify it fully, and update the documentation.
+```
+
+Continue until all MVP tasks are complete.
+
+## Complete Workflow
+
+```text
+Product idea
+↓
+Master prompt
+↓
+Short interview
+↓
+Approve direction
+↓
+Research and product documents
+↓
+Google Stitch design
+↓
+Coding-agent implementation
+↓
+Testing and verification
+↓
+Production deployment
+```
