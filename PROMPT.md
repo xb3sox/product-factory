@@ -75,7 +75,7 @@ Idea → Infer Owner Brief → Optional blocker batch
      → Design AI → Coding agent → Production
 ```
 
-Operator: `RUN.md`.
+Operator: `README.md`.
 
 ## Research process
 
