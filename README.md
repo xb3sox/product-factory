@@ -2,12 +2,11 @@
 
 Turn a product idea into research-backed docs that coding agents can build from.
 
-Workflow sources in this repo:
-
 | File | Role |
 | --- | --- |
 | [`PROMPT.md`](PROMPT.md) | Master prompt: interview defaults, live research, SWOT, feature scoring, seven-doc contract |
-| [`RUN.md`](RUN.md) | Operator guide: tool preflight, blueprint, quality check, design + build loop |
+
+This README is the operator guide.
 
 ## Flow
 
@@ -16,16 +15,57 @@ Idea → live research + SWOT → confirm once → 7 docs
      → Stitch → coding agent → production
 ```
 
-Happy path: paste idea → optional ≤3 picks → one `CONFIRM` → save docs. No serial interview. No manual Google paste.
+Happy path: idea → `OK` → files. No serial interview. No manual research.
 
-## Quick start
+## 0. Tool preflight
 
-1. Enable live search/browse on your host (ChatGPT, Gemini, Claude, or Cursor).
-2. Paste [`PROMPT.md`](PROMPT.md) + your idea (see [`RUN.md`](RUN.md) for the paste template).
-3. Reply `OK` on the Confirm card (or edit a line).
-4. Save the seven outputs into your product project root:
-   - `RESEARCH.md` · `README.md` · `PRODUCT.md` · `DESIGN.md` · `BUILD.md` · `AGENTS.md` · `DECISIONS.md`
-5. Stitch UI from PRODUCT + DESIGN, then build **one MVP feature per agent run** using `AGENTS.md`.
+Before paste: live search + page browsing on.
+
+| Host | Enable |
+| --- | --- |
+| ChatGPT | Search/browse; Deep Research; Projects/files |
+| Gemini | Google Search grounding; Deep Research |
+| Claude | Web search/fetch; Projects/files |
+| Cursor | Agent mode + web/browser/Firecrawl/MCP |
+| Other | Search + browse minimum; deep research/files if offered |
+
+No manual research/search-result paste. Factory calls tools + logs `RESEARCH.md`. No live tools → claims `ASSUMPTION`/`UNKNOWN`; live-search host required for current market/pricing/competitor/regulation confidence.
+
+## 1. Blueprint
+
+Paste [`PROMPT.md`](PROMPT.md), then:
+
+```text
+PRODUCT IDEA:
+<idea>
+
+OPTIONAL CONTEXT:
+<users, pain, constraints, budget, geography, screenshots, or links>
+```
+
+1. Infer defaults; optional ≤3-question batch (`go` accepts `★`).
+2. Research → one `CONFIRM`. Reply `OK` or edit (`drop 2`, `pain is X`).
+3. Save: `RESEARCH.md` · `README.md` · `PRODUCT.md` · `DESIGN.md` · `BUILD.md` · `AGENTS.md` · `DECISIONS.md`
+
+## 2. Quality check
+
+- RESEARCH: `as_of`, Tools Used, direct URLs, confidence/freshness; opened sources not snippets; official live pricing/features.
+- SWOT cited/assumed; PRODUCT 3–5 MVP each with evidence + acceptance + kill criteria; CONFIRM risks match docs; screens map to features.
+- Live tools available but unused → reject + rerun tool-enabled.
+
+## 3. Design + build
+
+**Stitch:** `PRODUCT.md` + `DESIGN.md` → visuals only. New feature → PRODUCT first. `PRODUCT` > `DESIGN`.
+
+**Prep:** seven docs → Cursor / Claude Code / Codex / OpenCode. Repo structure, `.env.example`, test skeleton, task list. No features yet. `RESEARCH.md` = evidence; `PRODUCT.md` = accepted behavior.
+
+**Build:** same agent, **one MVP feature per run**. Paste:
+
+> Follow `AGENTS.md`. Build one MVP feature from `PRODUCT.md` using `DESIGN.md` + `BUILD.md`; consult `RESEARCH.md` for evidence, not requirements. Plan → tests from acceptance criteria → implement → verify tests/typecheck/lint → self-review. Update docs. Log material choices in `DECISIONS.md`. No production deploy without approval.
+
+Loop: Plan → Code → Test → Review → Deploy only with human approval. Red tests = not done. Never whole product one run.
+
+Rules: `PRODUCT` > `DESIGN` > `BUILD` > `AGENTS`; RESEARCH informs PRODUCT. Human OK: production deploy, destructive DB, data deletion, secrets, security policy. After feature: update docs; fix upstream. Score first slice 1–10 (MVP, AC, UX, local, verify, agent); ≤7 → fix that slice before next.
 
 ## What you get
 
